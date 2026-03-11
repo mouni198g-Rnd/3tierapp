@@ -1,4 +1,4 @@
-name: Deploy Backend to Azure
+﻿name: Deploy Backend to Azure
 
 on:
   push:
@@ -10,7 +10,6 @@ jobs:
   deploy-backend:
     runs-on: ubuntu-latest
     steps:
-
       - name: Checkout Code
         uses: actions/checkout@v4
 
