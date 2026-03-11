@@ -23,9 +23,14 @@ jobs:
         working-directory: ./backend
         run: npm install --production
 
-      - name: Deploy to Azure Web App (3tierapp-be)
+      - name: Zip backend
+        run: |
+          cd backend
+          zip -r ../backend.zip .
+
+      - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
           app-name: '3tierapp-be'
           publish-profile: ${{ secrets.BACKEND_PUBLISH_PROFILE }}
-          package: ./backend
+          package: ./backend.zip
