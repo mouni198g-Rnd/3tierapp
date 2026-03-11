@@ -46,4 +46,4 @@ jobs:
           app-name: '3tierapp-fe'
           slot-name: 'Production'
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_867BBCABEF924BF19E7F7D5BC45AF0F6 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_7AAFD82CB6C341098E44AB2004D5B403 }}
