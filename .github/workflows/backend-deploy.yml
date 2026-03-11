@@ -1,0 +1,31 @@
+name: Deploy Backend to Azure
+
+on:
+  push:
+    branches: [ main ]
+    paths: [ 'backend/**' ]
+  workflow_dispatch:
+
+jobs:
+  deploy-backend:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install Dependencies
+        working-directory: ./backend
+        run: npm install --production
+
+      - name: Deploy to Azure Web App (3tierapp-be)
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: '3tierapp-be'
+          publish-profile: ${{ secrets.BACKEND_PUBLISH_PROFILE }}
+          package: ./backend

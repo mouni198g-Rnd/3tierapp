@@ -1,0 +1,31 @@
+name: Deploy Frontend to Azure
+
+on:
+  push:
+    branches: [ main ]
+    paths: [ 'frontend/**' ]
+  workflow_dispatch:
+
+jobs:
+  deploy-frontend:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 18
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install Dependencies
+        working-directory: ./frontend
+        run: npm install --production
+
+      - name: Deploy to Azure Web App (3tierapp-fe)
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: '3tierapp-fe'
+          publish-profile: ${{ secrets.FRONTEND_PUBLISH_PROFILE }}
+          package: ./frontend

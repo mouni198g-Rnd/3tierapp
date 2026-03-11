@@ -1,0 +1,15 @@
+{
+  "name": "todo-frontend",
+  "version": "1.0.0",
+  "description": "3-Tier Todo App - Frontend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
