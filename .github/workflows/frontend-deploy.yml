@@ -23,9 +23,14 @@ jobs:
         working-directory: ./frontend
         run: npm install --production
 
-      - name: Deploy to Azure Web App (3tierapp-fe)
+      - name: Zip frontend
+        run: |
+          cd frontend
+          zip -r ../frontend.zip .
+
+      - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
           app-name: '3tierapp-fe'
           publish-profile: ${{ secrets.FRONTEND_PUBLISH_PROFILE }}
-          package: ./frontend
+          package: ./frontend.zip
