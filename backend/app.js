@@ -28,6 +28,7 @@ const sqlConfig = {
 };
 
 // ─── DB HELPER ────────────────────────────────────────────────
+// ✅ Fix - reuse single connection pool
 let pool;
 async function getPool() {
   if (!pool) {
