@@ -22,8 +22,8 @@ const sqlConfig = {
   options: {
     encrypt:                true,
     trustServerCertificate: false,
-    connectTimeout:         30000,
-    requestTimeout:         30000
+    connectTimeout:         0,
+    requestTimeout:         0
   }
 };
 
