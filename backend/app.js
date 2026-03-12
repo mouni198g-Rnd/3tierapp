@@ -28,8 +28,12 @@ const sqlConfig = {
 };
 
 // ─── DB HELPER ────────────────────────────────────────────────
+let pool;
 async function getPool() {
-  return await sql.connect(sqlConfig);
+  if (!pool) {
+    pool = await sql.connect(sqlConfig);
+  }
+  return pool;
 }
 
 // ─── INIT DB TABLE ────────────────────────────────────────────
